@@ -1,0 +1,11 @@
+---
+- name: Modifica chiave di registro su Windows
+  hosts: windows
+  gather_facts: no
+  tasks:
+    - name: Modifica la chiave di registro "Permission Required"
+      ansible.windows.win_regedit:
+        path: HKLM:\SOFTWARE\Microsoft\SMS\Client\Client Components\Remote Control
+        name: 'Permission Required'
+        type: dword
+        data: 1
